@@ -10,7 +10,7 @@ import backend.BackendFacade;
 import view.commands.*;
 import util.KeyboardShortcutBuilder;
 import view.component.menu_bar.MenuBarBuilder;
-import view.components.EditorHTMLInsertionBar;
+import view.components.DebugConsole;
 import view.components.TextEditorPane;
 
 import javax.swing.*;
@@ -22,9 +22,11 @@ public class MainWindow extends Window {
         super("HTML Editor");
         this.backendFacade = new BackendFacade();
 
-        // Set up the status bar.
-        // TODO: Delete
-//        this.getContentPane().add(new EditorHTMLInsertionBar(), BorderLayout.SOUTH);
+        // Set up debug console
+        JTextPane debugConsole = new DebugConsole();
+        JScrollPane scrollDebugConsole = new JScrollPane(debugConsole);
+        scrollDebugConsole.setPreferredSize(new Dimension(0, 100));
+        this.getContentPane().add(scrollDebugConsole, BorderLayout.SOUTH);
 
         // Set up the editor.
         JTextPane textPane = new TextEditorPane(this.backendFacade);
@@ -38,45 +40,45 @@ public class MainWindow extends Window {
                 .addMenu("File")
                 .addItem(
                         "Open...",
-                        new OpenCommand(this.backendFacade),
+                        new OpenCommand(this, this.backendFacade),
                         new KeyboardShortcutBuilder()
-                            .addCommandKey(KeyboardShortcutBuilder.CONTROL)
-                            .setKey('o')
-                            .getResult()
+                                .addCommandKey(KeyboardShortcutBuilder.CONTROL)
+                                .setKey('o')
+                                .getResult()
                 )
                 .addItem(
                         "Save",
                         new SaveCommand(this.backendFacade),
                         new KeyboardShortcutBuilder()
-                            .addCommandKey(KeyboardShortcutBuilder.CONTROL)
-                            .setKey('s')
-                            .getResult()
+                                .addCommandKey(KeyboardShortcutBuilder.CONTROL)
+                                .setKey('s')
+                                .getResult()
                 )
                 .addItem(
                         "Save As...",
                         new SaveAsCommand(this.backendFacade),
                         new KeyboardShortcutBuilder()
-                            .addCommandKey(KeyboardShortcutBuilder.CONTROL)
-                            .addCommandKey(KeyboardShortcutBuilder.SHIFT)
-                            .setKey('s')
-                            .getResult()
+                                .addCommandKey(KeyboardShortcutBuilder.CONTROL)
+                                .addCommandKey(KeyboardShortcutBuilder.SHIFT)
+                                .setKey('s')
+                                .getResult()
                 )
                 .addMenu("Edit")
                 .addItem(
                         "Undo",
                         new UndoCommand(this.backendFacade),
                         new KeyboardShortcutBuilder()
-                            .addCommandKey(KeyboardShortcutBuilder.CONTROL)
-                            .setKey('z')
-                            .getResult()
+                                .addCommandKey(KeyboardShortcutBuilder.CONTROL)
+                                .setKey('z')
+                                .getResult()
                 )
                 .addItem(
                         "Redo",
                         new RedoCommand(this.backendFacade),
                         new KeyboardShortcutBuilder()
-                            .addCommandKey(KeyboardShortcutBuilder.CONTROL)
-                            .setKey('y')
-                            .getResult()
+                                .addCommandKey(KeyboardShortcutBuilder.CONTROL)
+                                .setKey('y')
+                                .getResult()
                 )
                 .addMenu("View")
                 .addItem(
@@ -89,6 +91,7 @@ public class MainWindow extends Window {
                 );
 
         this.setJMenuBar(menuBarBuilder.getResult());
+
         logger.log(this.getClass(), "Editor is ready.");
     }
 

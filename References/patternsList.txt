@@ -1,0 +1,22 @@
+Singleton:
+    Logger
+
+Builder:
+    MenuBarBuilder
+    KeyboardShortcutBuilder
+
+Observer:
+    Logger
+    DebugConsole
+
+Command:
+    Command
+    HideHTMLTagsCommand
+    OpenCommand
+    RedoCommand
+    SaveAsCommand
+    SaveCommand
+    ShowHTMLTagsCommand
+    UndoCommand
+
+

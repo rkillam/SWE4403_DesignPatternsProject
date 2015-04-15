@@ -1,13 +1,17 @@
 package view.commands;
 
 import backend.BackendFacade;
+import util.Logger;
 
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.
  */
-public class ShowHTMLTagsCommand extends Command {
+public class ShowHTMLTagsCommand implements Command {
+    private static final Logger logger = Logger.getInstance();
+    private BackendFacade backendFacade;
+
     public ShowHTMLTagsCommand(BackendFacade backendFacade) {
-        super(backendFacade);
+        this.backendFacade = backendFacade;
     }
 
     @Override
