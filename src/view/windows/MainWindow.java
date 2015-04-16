@@ -15,11 +15,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow extends Window {
-    private BackendFacade backendFacade;
-
     public MainWindow() {
         super("HTML Editor");
-        this.backendFacade = new BackendFacade(this);
+        BackendFacade backendFacade = new BackendFacade();
 
         // Set up debug console
         JTextPane debugConsole = new DebugConsole();
@@ -28,7 +26,7 @@ public class MainWindow extends Window {
         this.getContentPane().add(scrollDebugConsole, BorderLayout.SOUTH);
 
         // Set up the editor.
-        JTextPane textPane = new TextEditorPane(this.backendFacade);
+        JTextPane textPane = new TextEditorPane(backendFacade);
         JScrollPane scrollTextEditor = new JScrollPane(textPane);
         this.getContentPane().add(scrollTextEditor, BorderLayout.CENTER);
 
@@ -39,7 +37,7 @@ public class MainWindow extends Window {
                 .addMenu("File")
                 .addItem(
                         "Open...",
-                        new OpenCommand(this, this.backendFacade),
+                        new OpenCommand(this, backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('o')
@@ -47,7 +45,7 @@ public class MainWindow extends Window {
                 )
                 .addItem(
                         "Save",
-                        new SaveCommand(this, this.backendFacade),
+                        new SaveCommand(this, backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('s')
@@ -55,7 +53,7 @@ public class MainWindow extends Window {
                 )
                 .addItem(
                         "Save As...",
-                        new SaveAsCommand(this, this.backendFacade),
+                        new SaveAsCommand(this, backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .addCommandKey(KeyboardShortcutBuilder.SHIFT)
@@ -65,7 +63,7 @@ public class MainWindow extends Window {
                 .addMenu("Edit")
                 .addItem(
                         "Undo",
-                        new UndoCommand(this.backendFacade),
+                        new UndoCommand(backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('z')
@@ -73,7 +71,7 @@ public class MainWindow extends Window {
                 )
                 .addItem(
                         "Redo",
-                        new RedoCommand(this.backendFacade),
+                        new RedoCommand(backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('y')
@@ -82,11 +80,11 @@ public class MainWindow extends Window {
                 .addMenu("View")
                 .addItem(
                         "Show HTML Tags",
-                        new ShowHTMLTagsCommand(this.backendFacade)
+                        new ShowHTMLTagsCommand(backendFacade)
                 )
                 .addItem(
                         "Hide HTML Tags",
-                        new HideHTMLTagsCommand(this.backendFacade)
+                        new HideHTMLTagsCommand(backendFacade)
                 );
 
         this.setJMenuBar(menuBarBuilder.getResult());

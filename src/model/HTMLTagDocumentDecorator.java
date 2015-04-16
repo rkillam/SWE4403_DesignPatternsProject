@@ -1,5 +1,7 @@
 package model;
 
+import controller.HTMLTreeVisitor;
+
 import java.util.Iterator;
 
 /**
@@ -14,18 +16,32 @@ public abstract class HTMLTagDocumentDecorator extends DocumentComponent {
         this.tag = tag;
     }
 
+    @Override
     public void addChild(DocumentComponent newChild) {
         this.childComponent.addChild(newChild);
     }
 
+    @Override
     public void removeChild(DocumentComponent oldChild) {
         this.childComponent.removeChild(oldChild);
     }
 
+    @Override
     public DocumentComponent getChild(Integer index) {
         return this.childComponent.getChild(index);
     }
 
+    @Override
+    public Integer getNumberOfChildren() {
+        return this.childComponent.getNumberOfChildren();
+    }
+
+    @Override
+    public void accept(HTMLTreeVisitor v) {
+        this.childComponent.accept(v);
+    }
+
+    @Override
     public Iterator<DocumentComponent> createIterator(){
         return this.childComponent.createIterator();
     }

@@ -12,6 +12,11 @@ public class DocumentItem extends DocumentComponent {
 
     @Override
     public String toString() {
-        return this.character.toString();
+        if(this.character == '\0') {
+            return "";
+        }
+        else {
+            return this.character.toString();
+        }
     }
 }

@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.*;
 import util.Logger;
 
 import java.util.LinkedList;
@@ -54,7 +55,7 @@ public class DocumentModelBuilder {
 
         char[] characterList = content.toCharArray();
         for(Integer i = 0; i < characterList.length; ++i) {
-            if(!matches.isEmpty() && i == matches.peek().start) {
+            if(!matches.isEmpty() && i.equals(matches.peek().start)) {
                 String match = matches.peek().group;
                 if(match.matches("<[^/]+/>")) {  // Single HTML tag
                     DocumentComponent lastChild;
@@ -66,7 +67,7 @@ public class DocumentModelBuilder {
                         lastChild = this.flyweightFactory.lookup('\0');
                     }
 
-                    this.componentStack.peek().addChild(new ClosingHTMLTagDocumentDecorator(lastChild, match));
+                    this.componentStack.peek().addChild(new SelfClosingHTMLTagDocumentDecorator(lastChild, match));
                 }
                 else {  // Paired HTML tag
                     if(match.matches("<[^/]+>")) {

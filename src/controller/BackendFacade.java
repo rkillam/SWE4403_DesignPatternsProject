@@ -1,7 +1,6 @@
 package controller;
 
 import model.DocumentModel;
-import model.DocumentModelBuilder;
 import util.Logger;
 import view.windows.Window;
 
@@ -14,12 +13,12 @@ import java.util.Observer;
  */
 public class BackendFacade extends Observable implements Observer {
     private static Logger logger = Logger.getInstance();
-    private Window window;
 
+    private HTMLTreeValidator htmlTreeValidator;
     private DocumentModel documentModel;
 
-    public BackendFacade(Window window) {
-        this.window = window;
+    public BackendFacade() {
+        this.htmlTreeValidator = HTMLTreeValidator.getInstance();
         this.documentModel = new DocumentModel();
     }
 
@@ -33,6 +32,10 @@ public class BackendFacade extends Observable implements Observer {
 
     public void setSaveFile(File file) {
         this.documentModel.saveFile = file;
+    }
+
+    public Boolean isDocumentValid() {
+        return this.htmlTreeValidator.isHTMLTreeValid(this.documentModel.documentRoot);
     }
 
     private void createDocumentTree(String documentString) {

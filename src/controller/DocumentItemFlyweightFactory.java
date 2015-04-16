@@ -1,4 +1,6 @@
-package model;
+package controller;
+
+import model.DocumentItem;
 
 import java.util.HashMap;
 

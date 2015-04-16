@@ -1,5 +1,7 @@
 package model;
 
+import controller.HTMLTreeVisitor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +22,7 @@ public abstract class DocumentComponent {
     public void addChild(DocumentComponent newChild){}
     public void removeChild(DocumentComponent oldChild){}
     public DocumentComponent getChild(Integer index){ return null; }
+    public void accept(HTMLTreeVisitor v){}
 
     public Integer getNumberOfChildren() {
         return this.childComponents.size();

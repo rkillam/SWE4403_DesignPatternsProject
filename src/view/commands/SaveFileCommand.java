@@ -22,25 +22,34 @@ public abstract class SaveFileCommand extends Command {
 
     @Override
     public void execute() {
-        try {
-            File saveLocation = this.getSaveFile();
-            if(saveLocation != null) {
-                FileWriter fileWriter = new FileWriter(saveLocation);
-                fileWriter.write(this.backendFacade.getDocumentModel().getDocumentString());
-                fileWriter.close();
+        if(this.backendFacade.isDocumentValid()) {
+            try {
+                File saveLocation = this.getSaveFile();
+                if(saveLocation != null) {
+                    FileWriter fileWriter = new FileWriter(saveLocation);
+                    fileWriter.write(this.backendFacade.getDocumentModel().getDocumentString());
+                    fileWriter.close();
 
-                this.backendFacade.setSaveFile(saveLocation);
+                    this.backendFacade.setSaveFile(saveLocation);
 
-                logger.log(this.getClass(), "File saved successfully!");
+                    logger.log(this.getClass(), "File saved successfully!");
+                }
+                else {
+                    logger.log(this.getClass(), "Unable to save file", Logger.WARNING);
+                }
             }
-            else {
-                logger.log(this.getClass(), "Unable to save file", Logger.WARNING);
+            catch(IOException e) {
+                logger.log(
+                        this.getClass(),
+                        "IOException occurred while saving file: " + e.getMessage(),
+                        Logger.ERROR
+                );
             }
         }
-        catch(IOException e) {
+        else {
             logger.log(
                     this.getClass(),
-                    "IOException occurred while saving file: " + e.getMessage(),
+                    "Could not save document: Invalid HTML",
                     Logger.ERROR
             );
         }
