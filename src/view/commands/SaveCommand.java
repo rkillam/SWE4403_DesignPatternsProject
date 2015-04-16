@@ -1,11 +1,9 @@
 package view.commands;
 
 import controller.BackendFacade;
-import util.Logger;
 import view.windows.Window;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 /**

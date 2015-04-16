@@ -1,7 +1,6 @@
 package view.commands;
 
 import controller.BackendFacade;
-import util.Logger;
 
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.

@@ -1,6 +1,7 @@
 package controller;
 
-import model.*;
+import model.DocumentModel;
+import model.DocumentModelBuilder;
 import util.Logger;
 import view.windows.Window;
 

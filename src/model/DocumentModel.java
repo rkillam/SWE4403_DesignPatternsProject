@@ -14,8 +14,17 @@ public class DocumentModel {
         this.saveFile = null;
     }
 
-    @Override
-    public String toString() {
-        return this.documentRoot.toString();
+    public String getDocumentString() {
+        String retString = "";
+
+        if(this.documentRoot != null) {
+            DocumentIterator documentIterator = new DocumentIterator(this.documentRoot);
+            while(documentIterator.hasNext()) {
+                retString += documentIterator.currentComponent().toString();
+                documentIterator.next();
+            }
+        }
+
+        return retString;
     }
 }

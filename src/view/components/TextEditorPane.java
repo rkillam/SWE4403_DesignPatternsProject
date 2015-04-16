@@ -32,7 +32,7 @@ public class TextEditorPane extends JTextPane implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         logger.log(TextEditorPane.class, "Editor window is updating.");
-        setText(this.backendFacade.getDocumentModel().toString());
+        setText(this.backendFacade.getDocumentModel().getDocumentString());
     }
 
     private class DocumentChangedListener implements KeyListener {

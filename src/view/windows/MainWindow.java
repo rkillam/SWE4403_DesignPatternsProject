@@ -4,16 +4,15 @@
 
 package view.windows;
 
-import java.awt.*;
-
 import controller.BackendFacade;
-import view.commands.*;
 import util.KeyboardShortcutBuilder;
+import view.commands.*;
 import view.component.menu_bar.MenuBarBuilder;
 import view.components.DebugConsole;
 import view.components.TextEditorPane;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainWindow extends Window {
     private BackendFacade backendFacade;

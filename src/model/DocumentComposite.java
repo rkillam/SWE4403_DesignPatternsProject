@@ -18,11 +18,6 @@ public class DocumentComposite extends DocumentComponent {
 
     @Override
     public String toString() {
-        String retString = "";
-        for(DocumentComponent child : this.childComponents) {
-            retString += child.toString();
-        }
-
-        return retString;
+        return "";
     }
 }

@@ -1,6 +1,5 @@
 package view.components;
 
-import view.commands.*;
 import util.Logger;
 
 import javax.swing.*;

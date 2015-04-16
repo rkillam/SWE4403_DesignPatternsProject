@@ -27,11 +27,8 @@
         SaveCommand
         SaveAsCommand
 
-6 - Decorator:
-        DocumentComponent
-        DocumentComposite
-        DocumentItem
-        DocumentRowDecorator
+6 - Iterator:
+        DocumentIterator
 
 7 - Facade:
         BackendFacade

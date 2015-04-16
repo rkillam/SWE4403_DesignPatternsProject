@@ -1,6 +1,6 @@
 package view.component.menu_bar;
 
-import view.commands.*;
+import view.commands.Command;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

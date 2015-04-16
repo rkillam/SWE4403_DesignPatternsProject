@@ -26,7 +26,7 @@ public abstract class SaveFileCommand extends Command {
             File saveLocation = this.getSaveFile();
             if(saveLocation != null) {
                 FileWriter fileWriter = new FileWriter(saveLocation);
-                fileWriter.write(this.backendFacade.getDocumentModel().toString());
+                fileWriter.write(this.backendFacade.getDocumentModel().getDocumentString());
                 fileWriter.close();
 
                 this.backendFacade.setSaveFile(saveLocation);

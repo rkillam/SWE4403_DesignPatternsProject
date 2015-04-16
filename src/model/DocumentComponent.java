@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,8 +25,7 @@ public abstract class DocumentComponent {
         return this.childComponents.size();
     }
 
-    public Object createIterator(){
-        // TODO: Implement Document Iteration
-        return null;
+    public Iterator<DocumentComponent> createIterator(){
+        return this.childComponents.iterator();
     }
 }
