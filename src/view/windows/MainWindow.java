@@ -6,7 +6,7 @@ package view.windows;
 
 import java.awt.*;
 
-import backend.BackendFacade;
+import controller.BackendFacade;
 import view.commands.*;
 import util.KeyboardShortcutBuilder;
 import view.component.menu_bar.MenuBarBuilder;
@@ -20,7 +20,7 @@ public class MainWindow extends Window {
 
     public MainWindow() {
         super("HTML Editor");
-        this.backendFacade = new BackendFacade();
+        this.backendFacade = new BackendFacade(this);
 
         // Set up debug console
         JTextPane debugConsole = new DebugConsole();
@@ -48,7 +48,7 @@ public class MainWindow extends Window {
                 )
                 .addItem(
                         "Save",
-                        new SaveCommand(this.backendFacade),
+                        new SaveCommand(this, this.backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('s')
@@ -56,7 +56,7 @@ public class MainWindow extends Window {
                 )
                 .addItem(
                         "Save As...",
-                        new SaveAsCommand(this.backendFacade),
+                        new SaveAsCommand(this, this.backendFacade),
                         new KeyboardShortcutBuilder()
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .addCommandKey(KeyboardShortcutBuilder.SHIFT)

@@ -1,22 +1,46 @@
-Singleton:
-    Logger
+1 - Singleton:
+        Logger
+        DocumentModelDirector
+        DocumentItemFlyweightFactor
 
-Builder:
-    MenuBarBuilder
-    KeyboardShortcutBuilder
+2 - Builder:
+        MenuBarBuilder
+        KeyboardShortcutBuilder
+        DocumentModelBuilder
 
-Observer:
-    Logger
-    DebugConsole
+3 - Observer:
+        Logger
+        DebugConsole
 
-Command:
-    Command
-    HideHTMLTagsCommand
-    OpenCommand
-    RedoCommand
-    SaveAsCommand
-    SaveCommand
-    ShowHTMLTagsCommand
-    UndoCommand
+4 - Command:
+        Command
+        HideHTMLTagsCommand
+        OpenCommand
+        RedoCommand
+        SaveAsCommand
+        SaveCommand
+        ShowHTMLTagsCommand
+        UndoCommand
 
+5 - Template Method:
+        SaveFileCommand
+        SaveCommand
+        SaveAsCommand
 
+6 - Decorator:
+        DocumentComponent
+        DocumentComposite
+        DocumentItem
+        DocumentRowDecorator
+
+7 - Facade:
+        BackendFacade
+
+8 - Composite:
+        DocumentComponent
+        DocumentComposite
+        DocumentItem
+        DocumentRowDecorator
+
+9 - Flyweight:
+        DocumentItemFlyweightFactor

@@ -1,6 +1,6 @@
 package view.components;
 
-import backend.BackendFacade;
+import controller.BackendFacade;
 import util.Logger;
 
 import javax.swing.*;
@@ -43,7 +43,7 @@ public class TextEditorPane extends JTextPane {
 
                 if(!content.equals(previousState)) {
                     previousState = content;
-//                    backendFacade.update(content);
+                    backendFacade.update(content);
                 }
             }
         }

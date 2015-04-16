@@ -1,6 +1,6 @@
 package view.commands;
 
-import backend.BackendFacade;
+import controller.BackendFacade;
 import util.Logger;
 import view.windows.Window;
 
@@ -13,18 +13,17 @@ import java.util.Scanner;
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.
  */
-public class OpenCommand implements Command {
-    private static final Logger logger = Logger.getInstance();
+public class OpenCommand extends Command {
     private Window window;
-    private BackendFacade backendFacade;
 
     public OpenCommand(Window window, BackendFacade backendFacade) {
+        super(backendFacade);
         this.window = window;
-        this.backendFacade = backendFacade;
     }
 
     @Override
     public void execute() {
+        super.execute();
         JFileChooser fileChooser = new JFileChooser();
         Integer returnValue = fileChooser.showOpenDialog(this.window);
 

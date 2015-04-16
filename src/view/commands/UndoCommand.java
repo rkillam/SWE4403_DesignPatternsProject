@@ -1,21 +1,19 @@
 package view.commands;
 
-import backend.BackendFacade;
+import controller.BackendFacade;
 import util.Logger;
 
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.
  */
-public class UndoCommand implements Command {
-    private static final Logger logger = Logger.getInstance();
-    private BackendFacade backendFacade;
-
+public class UndoCommand extends Command {
     public UndoCommand(BackendFacade backendFacade) {
-        this.backendFacade = backendFacade;
+        super(backendFacade);
     }
 
     @Override
     public void execute() {
+        super.execute();
         logger.log(this.getClass(), "Executing Undo Command");
     }
 }
