@@ -12,6 +12,10 @@ public class DocumentComposite extends DocumentComponent {
         this.childComponents.remove(oldChild);
     }
 
+    public DocumentComponent getChild(Integer index) {
+        return this.childComponents.get(index);
+    }
+
     @Override
     public String toString() {
         String retString = "";

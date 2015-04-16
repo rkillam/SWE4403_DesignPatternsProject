@@ -28,8 +28,6 @@ public class SaveCommand extends SaveFileCommand {
 
     @Override
     public void execute() {
-        logger.log(this.getClass(), "Saving", Logger.DEBUG);
         super.execute();
-        logger.log(this.getClass(), "Done Saving", Logger.DEBUG);
     }
 }

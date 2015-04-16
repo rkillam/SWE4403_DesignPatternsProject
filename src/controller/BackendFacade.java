@@ -11,16 +11,15 @@ import java.util.Observer;
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.
  */
-public class BackendFacade implements Observer {
+public class BackendFacade extends Observable implements Observer {
     private static Logger logger = Logger.getInstance();
     private Window window;
 
     private DocumentModel documentModel;
-    private DocumentModelDirector documentModelDirector;
 
     public BackendFacade(Window window) {
         this.window = window;
-        this.documentModelDirector = DocumentModelDirector.getInstance();
+        this.documentModel = new DocumentModel();
     }
 
     public DocumentModel getDocumentModel() {
@@ -28,11 +27,24 @@ public class BackendFacade implements Observer {
     }
 
     public File getSaveFile() {
-        return this.documentModel.getSaveFile();
+        return this.documentModel.saveFile;
+    }
+
+    public void setSaveFile(File file) {
+        this.documentModel.saveFile = file;
+    }
+
+    private void createDocumentTree(String documentString) {
+        DocumentModelBuilder builder = new DocumentModelBuilder();
+
+        builder.build(documentString);
+        this.documentModel.documentRoot = builder.getResult();
     }
 
     public void update(String documentContent) {
-        this.documentModel = this.documentModelDirector.createDocumentModel(documentContent);
+        this.createDocumentTree(documentContent);
+        this.setChanged();
+        this.notifyObservers();
     }
 
     @Override

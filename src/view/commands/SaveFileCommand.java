@@ -22,18 +22,14 @@ public abstract class SaveFileCommand extends Command {
 
     @Override
     public void execute() {
-        logger.log(this.getClass(), "In SaveFileCommand", Logger.DEBUG);
-
         try {
             File saveLocation = this.getSaveFile();
-            logger.log(this.getClass(), "Got file", Logger.DEBUG);
             if(saveLocation != null) {
-                logger.log(this.getClass(), "About to save file", Logger.DEBUG);
                 FileWriter fileWriter = new FileWriter(saveLocation);
-                logger.log(this.getClass(), "Made fileWriter", Logger.DEBUG);
                 fileWriter.write(this.backendFacade.getDocumentModel().toString());
-                logger.log(this.getClass(), "fileWriter.write", Logger.DEBUG);
                 fileWriter.close();
+
+                this.backendFacade.setSaveFile(saveLocation);
 
                 logger.log(this.getClass(), "File saved successfully!");
             }

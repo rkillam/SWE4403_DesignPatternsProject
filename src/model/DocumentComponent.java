@@ -18,6 +18,7 @@ public abstract class DocumentComponent {
 
     public void addChild(DocumentComponent newChild){}
     public void removeChild(DocumentComponent oldChild){}
+    public DocumentComponent getChild(Integer index){ return null; }
 
     public Integer getNumberOfChildren() {
         return this.childComponents.size();

@@ -15,17 +15,17 @@ public class DocumentModelBuilder {
         this.flyweightFactory = DocumentItemFlyweightFactory.getInstance();
     }
 
-    public void addLine(String line) {
+    public void build(String line) {
         DocumentComposite row = new DocumentComposite();
 
         for(Character c : line.toCharArray()) {
             row.addChild(this.flyweightFactory.lookup(c));
         }
 
-        this.currentComposite.addChild(new DocumentRowDecorator(row));
+        this.currentComposite.addChild(row);
     }
 
-    public DocumentModel getResult() {
-        return new DocumentModel(this.rootComponent);
+    public DocumentComponent getResult() {
+        return this.rootComponent;
     }
 }

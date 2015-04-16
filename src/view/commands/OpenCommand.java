@@ -23,7 +23,6 @@ public class OpenCommand extends Command {
 
     @Override
     public void execute() {
-        super.execute();
         JFileChooser fileChooser = new JFileChooser();
         Integer returnValue = fileChooser.showOpenDialog(this.window);
 
@@ -49,6 +48,9 @@ public class OpenCommand extends Command {
                     scanner.close();
                 }
             }
+
+            this.backendFacade.update(result);
+            this.backendFacade.setSaveFile(file);
         }
         else {
             logger.log(this.getClass(), "Open file operation aborted", Logger.ERROR);
