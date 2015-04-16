@@ -13,11 +13,24 @@ public class DocumentComposite extends DocumentComponent {
     }
 
     public DocumentComponent getChild(Integer index) {
-        return this.childComponents.get(index);
+        DocumentComponent wantedChild;
+        if(index < 0) {  // Allows for Python style negative indexing
+            wantedChild = this.childComponents.get(this.getNumberOfChildren() + index);
+        }
+        else {
+            wantedChild = this.childComponents.get(index);
+        }
+
+        return wantedChild;
     }
 
     @Override
     public String toString() {
-        return "";
+        String retString = "";
+        for(DocumentComponent child : this.childComponents) {
+            retString += child.toString();
+        }
+
+        return retString;
     }
 }

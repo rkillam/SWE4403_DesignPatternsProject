@@ -41,3 +41,8 @@
 
 9 - Flyweight:
         DocumentItemFlyweightFactor
+
+10 - Decorator:
+        HTMLTagDocumentDecorator
+        OpeningHTMLTagDocumentDecorator
+        ClosingHTMLTagDocumentDecorator

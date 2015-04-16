@@ -15,16 +15,18 @@ public class DocumentModel {
     }
 
     public String getDocumentString() {
-        String retString = "";
+        return this.documentRoot.toString();
 
-        if(this.documentRoot != null) {
-            DocumentIterator documentIterator = new DocumentIterator(this.documentRoot);
-            while(documentIterator.hasNext()) {
-                retString += documentIterator.currentComponent().toString();
-                documentIterator.next();
-            }
-        }
-
-        return retString;
+//        String retString = "";
+//
+//        if(this.documentRoot != null) {
+//            DocumentIterator documentIterator = new DocumentIterator(this.documentRoot);
+//            while(documentIterator.hasNext()) {
+//                retString += documentIterator.currentComponent().toString();
+//                documentIterator.next();
+//            }
+//        }
+//
+//        return retString;
     }
 }

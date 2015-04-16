@@ -49,7 +49,7 @@ public class OpenCommand extends Command {
                 }
             }
 
-            this.backendFacade.update(result);
+            this.backendFacade.update(result, true);
             this.backendFacade.setSaveFile(file);
         }
         else {

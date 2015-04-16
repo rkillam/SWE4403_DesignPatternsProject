@@ -43,9 +43,16 @@ public class BackendFacade extends Observable implements Observer {
     }
 
     public void update(String documentContent) {
+        this.update(documentContent, false);
+    }
+
+    public void update(String documentContent, Boolean updateTextPane) {
         this.createDocumentTree(documentContent);
-        this.setChanged();
-        this.notifyObservers();
+
+        if(updateTextPane) {
+            this.setChanged();
+            this.notifyObservers();
+        }
     }
 
     @Override
