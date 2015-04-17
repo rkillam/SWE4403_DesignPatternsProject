@@ -1,63 +1,90 @@
 1 - Singleton:
-        Logger
-        DocumentModelDirector
-        DocumentItemFlyweightFactor
+        Logger                          (Singleton)
+        DocumentModelDirector           (Singleton)
+        DocumentItemFlyweightFactor     (Singleton)
 
 2 - Builder:
-        MenuBarBuilder
-        KeyboardShortcutBuilder
-        DocumentModelBuilder
+        MenuBarBuilder                  (Concrete builder)
+        JMenuBar                        (Product)
+        MainWindow                      (Director)
+
+        KeyboardShortcutBuilder         (Concrete builder)
+        String                          (Product)
+        MainWindow                      (Director)
+
+        DocumentModelBuilder            (Concrete builder)
+        DocumentComponents              (Product)
+        BackendFacade                   (Director)
 
 3 - Observer:
-        Logger
-        DebugConsole
+        Observable                      (Abstract subject)
+        Observer                        (Abstract observer)
+        Logger                          (Concrete subject)
+        BackendFacade                   (Concrete subject)
+        DebugConsole                    (Concrete observer)
+        MementoManager                  (Concrete observer)
+        TextEditorPane                  (Concrete observer)
 
 4 - Command:
-        Command
-        HideHTMLTagsCommand
-        OpenCommand
-        RedoCommand
-        SaveAsCommand
-        SaveCommand
-        ShowHTMLTagsCommand
-        UndoCommand
+        Command                         (Abstract command)
+        HideHTMLTagsCommand             (Concrete command)
+        OpenCommand                     (Concrete command)
+        RedoCommand                     (Concrete command)
+        SaveAsCommand                   (Concrete command)
+        SaveCommand                     (Concrete command)
+        ShowHTMLTagsCommand             (Concrete command)
+        UndoCommand                     (Concrete command)
+        MainWindow                      (Client)
+        ActionListener                  (Invoker)
+        BackendFacade                   (Receiver)
 
 5 - Template Method:
-        SaveFileCommand
-        SaveCommand
-        SaveAsCommand
+        SaveFileCommand                 (Abstract class)
+        SaveCommand                     (Concrete class)
+        SaveAsCommand                   (Concrete class)
 
 6 - Iterator:
-        DocumentIterator
+        DocumentIterator                (Concrete iterator)
+        DocumentComponent               (Concrete aggregate)
 
 7 - Facade:
-        BackendFacade
+        BackendFacade                   (Facade)
+        model.*                         (Subsystem classes)
+        controller.*                    (Subsystem classes)
 
 8 - Composite:
-        DocumentComponent
-        DocumentComposite
-        DocumentItem
-        DocumentRowDecorator
+        DocumentComponent               (Component)
+        DocumentComposite               (Composite)
+        HTMLTagDocumentDecorators       (Composite)
+        DocumentItem                    (Leaf)
+        DocumentModelBuilder            (Client)
+        HTMLTreeValidator               (Client)
 
 9 - Flyweight:
-        DocumentItemFlyweightFactor
+        DocumentItemFlyweightFactory    (Flyweightfactory)
+        Character                       (Concrete flyweight)
+        DocumentItem                    (Client)
 
 10 - Decorator:
-        HTMLTagDocumentDecorator
-        OpeningHTMLTagDocumentDecorator
-        ClosingHTMLTagDocumentDecorator
+        DocumentComponent               (Component)
+        HTMLTagDocumentDecorator        (Abstract decorator)
+        OpeningHTMLTagDocumentDecorator (Concrete decorator)
+        ClosingHTMLTagDocumentDecorator (Concrete decorator)
+        SelfClosingHtmlTagDecorator     (Concrete decorator)
 
 11 - Visitor:
-        HTMLTreeVisitor
+        HTMLTreeVisitor                 (Concrete Visitor)
+        DocumentComponent               (Element)
 
 12 - Memento:
-        DocumentMemento
-        MementoManager
+        DocumentMemento                 (Memento)
+        MementoManager                  (Caretaker)
+        BackendFacade                   (Originator)
+        DocumentModel                   (Originator)
 
 13 - Factory method:
         Window                      (Abstract creator)
-        EditorWindow                (Concrete creator)
-        ConsoleWindow               (Concrete creator)
+        MainWindow                  (Concrete creator)
         LayoutManager               (Abstract product)
         BorderLayout                (Concrete product)
         Dimension                   (Concrete product)
