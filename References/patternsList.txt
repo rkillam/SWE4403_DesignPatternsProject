@@ -46,3 +46,18 @@
         HTMLTagDocumentDecorator
         OpeningHTMLTagDocumentDecorator
         ClosingHTMLTagDocumentDecorator
+
+11 - Visitor:
+        HTMLTreeVisitor
+
+12 - Memento:
+        DocumentMemento
+        MementoManager
+
+13 - Factory method:
+        Window                      (Abstract creator)
+        EditorWindow                (Concrete creator)
+        ConsoleWindow               (Concrete creator)
+        LayoutManager               (Abstract product)
+        BorderLayout                (Concrete product)
+        Dimension                   (Concrete product)

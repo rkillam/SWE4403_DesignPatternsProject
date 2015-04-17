@@ -1,6 +1,7 @@
 package view.commands;
 
 import controller.BackendFacade;
+import util.Logger;
 
 /**
  * Created by Richard Killam, 3412522 on 14/04/15.
@@ -12,7 +13,7 @@ public class RedoCommand extends Command {
 
     @Override
     public void execute() {
-        super.execute();
-        logger.log(this.getClass(), "Executing Redo Command");
+        this.backendFacade.redo();
+        logger.log(this.getClass(), "Redo command", Logger.DEBUG);
     }
 }
