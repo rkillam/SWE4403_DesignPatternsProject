@@ -7,7 +7,7 @@ package view.windows;
 import controller.BackendFacade;
 import util.KeyboardShortcutBuilder;
 import view.commands.*;
-import view.component.menu_bar.MenuBarBuilder;
+import view.components.MenuBarBuilder;
 import view.components.DebugConsole;
 import view.components.TextEditorPane;
 
@@ -76,15 +76,6 @@ public class MainWindow extends Window {
                                 .addCommandKey(KeyboardShortcutBuilder.CONTROL)
                                 .setKey('y')
                                 .getResult()
-                )
-                .addMenu("View")
-                .addItem(
-                        "Show HTML Tags",
-                        new ShowHTMLTagsCommand(backendFacade)
-                )
-                .addItem(
-                        "Hide HTML Tags",
-                        new HideHTMLTagsCommand(backendFacade)
                 );
 
         this.setJMenuBar(menuBarBuilder.getResult());

@@ -46,7 +46,6 @@ public class TextEditorPane extends JTextPane implements Observer {
 
         @Override
         public void keyReleased(KeyEvent keyEvent) {
-            logger.log(this.getClass(), "Key pressed");
             if(!keyEvent.isActionKey()) {
                 String content = TextEditorPane.this.getText();
 

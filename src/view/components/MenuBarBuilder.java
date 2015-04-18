@@ -1,4 +1,4 @@
-package view.component.menu_bar;
+package view.components;
 
 import view.commands.Command;
 
